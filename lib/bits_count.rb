@@ -1,4 +1,5 @@
 require "bits_count/version"
+require 'bits_count/file'
 
 module BitsCount
   # Your code goes here...
