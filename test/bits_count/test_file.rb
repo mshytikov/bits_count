@@ -3,18 +3,23 @@ require 'test_helper'
 class TestBitsCountFile < Test::Unit::TestCase
   include Fixtures
 
-  Fixtures.all.each do  |fixture| 
-    define_method "test_population_count_file_#{fixture}" do
-      path = fixture_path(fixture)
-      assert_equal(fixture, BitsCount::File.population_count(path, :int32), "alg :int32")
-      assert_equal(fixture, BitsCount::File.population_count(path, :str), "alg :srt")
-      assert_equal(fixture, BitsCount::File.population_count(path, :map), "alg :srt")
+  Fixtures.all.each do  |path, bit0_count, bit1_count| 
+    file_name = File.basename(path)
+
+    define_method "test_population_count_file_#{file_name}" do
+      assert_equal(bit1_count, BitsCount::File.population_count(path, :int32), "alg :int32")
+      assert_equal(bit1_count, BitsCount::File.population_count(path, :str), "alg :srt")
+      assert_equal(bit1_count, BitsCount::File.population_count(path, :map), "alg :srt")
+    end
+
+    define_method "test_bits_count_#{file_name}" do
+      expected = { bit0_count: bit0_count, bit1_count: bit1_count }
+      assert_equal(expected, BitsCount::File.bits_count(path))
     end
   end 
 
-
   def test_benchmark
-    path = Fixtures.generate_large_bin
+    path = Fixtures.large_bin
     Benchmark.bmbm  do |x|
       [:int32, :map, :str].each do |alg|
         x.report("File.population_count alg: #{alg}") { BitsCount::File.population_count(path, alg) } 

@@ -17,6 +17,15 @@ module BitsCount
         end
       end
 
+      def bits_count(path)
+        f_size = ::File.size(path)
+        bit1_count = population_count(path)
+        {
+          bit0_count: f_size*8 - bit1_count,
+          bit1_count: bit1_count
+        }
+      end
+
     end
   end 
 end

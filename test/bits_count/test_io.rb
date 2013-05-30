@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'stringio'
 
 class TestBitsCountIO < Test::Unit::TestCase
   TEST_BIT_STRINGS = {
@@ -25,7 +26,7 @@ class TestBitsCountIO < Test::Unit::TestCase
   end
 
   def test_benchmark
-    io =  StringIO.new(File.binread(Fixtures.generate_large_bin), 'rb')
+    io =  StringIO.new(File.binread(Fixtures.large_bin), 'rb')
     Benchmark.bmbm  do |x|
       TEST_METHODS.each do |method|
         x.report("IO.#{method}"){ io.rewind; BitsCount::IO.send(method, io)  }
