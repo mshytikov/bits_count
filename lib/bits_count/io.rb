@@ -1,11 +1,11 @@
 module BitsCount
   module IO
+
+    BUFFER_SIZE    = 256
+    UNPACK_PATTERN = "N*"
+    BIN_STR_END    = [0].pack("N")
+
     class << self
-
-      BUFFER_SIZE    = 256
-      UNPACK_PATTERN = "N*"
-      BIN_STR_END    = [0].pack("N")
-
 
       def population_count_int32(io)
         count = 0
@@ -35,5 +35,6 @@ module BitsCount
         end
       end
     end
+
   end 
 end

@@ -1,5 +1,6 @@
 module BitsCount
   module File
+
     class << self
 
       def population_count(path, alg = :str)
@@ -12,7 +13,7 @@ module BitsCount
           when :map
             IO.population_count_map(f) 
           else
-            raise ArgumentError, "wron method #{method}"
+            raise NotImplementedError, "#{alg} algorithm is not implemented"
           end
         end
       end
@@ -25,7 +26,7 @@ module BitsCount
           bit1_count: bit1_count
         }
       end
-
     end
-  end 
+
+  end
 end

@@ -9,7 +9,6 @@ module Fixtures
     File.expand_path(name.to_s, ROOT)
   end
 
-
   class << self
     
     def all

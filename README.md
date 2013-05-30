@@ -1,6 +1,7 @@
 # BitsCount
 
-TODO: Write a gem description
+Implementations of population count (Hamming weight in binary case)
+using pure ruby.
 
 ## Installation
 
@@ -18,12 +19,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Example: Calculate bits count in file
 
-## Contributing
+(in IRB)
+```
+require 'bits_count/irb_helper'
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+count_bits "path/to/some/file.jpg"
+```

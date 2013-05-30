@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = BitsCount::VERSION
   spec.authors       = ["Max Shytikov"]
   spec.email         = ["mshytikov@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "Implementation of population count in pure ruby"
+  spec.summary       = "Bit counter"
   spec.homepage      = ""
   spec.license       = "MIT"
 

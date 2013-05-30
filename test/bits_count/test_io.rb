@@ -13,6 +13,7 @@ class TestBitsCountIO < Test::Unit::TestCase
     "01"*64       => 64,
     "0"*512<< "1" => 1
   }
+
   TEST_METHODS = BitsCount::IO.methods.grep(/population_count/)
 
   TEST_METHODS.each do |method|
@@ -34,6 +35,5 @@ class TestBitsCountIO < Test::Unit::TestCase
     end
     io.close
   end
-
 end
 

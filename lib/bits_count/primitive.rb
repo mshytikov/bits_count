@@ -1,7 +1,7 @@
 module BitsCount
   module Primitive
-    UNPACK_PATTERN = "B*"
 
+    UNPACK_PATTERN = "B*"
 
     class << self
 
@@ -25,9 +25,7 @@ module BitsCount
 
     end
 
-    WORDBITS = {}
-    0.upto(2**16-1).each{|i| WORDBITS[i] = population_count_int32(i) }
-    WORDBITS.freeze
+    WORDBITS = Hash[0.upto(2**16-1).map{|i| [i, population_count_int32(i)] }].freeze
     
   end
 end
